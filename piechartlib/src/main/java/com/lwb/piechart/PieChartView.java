@@ -10,6 +10,7 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -50,7 +51,7 @@ public class PieChartView extends View {
 
     private float offRadius = 0, offLine;
 
-    private int textAlpha;
+    private float textAlpha;
 
     private Point firstPoint;
 
@@ -127,7 +128,10 @@ public class PieChartView extends View {
                     offRadius = 360f;
                     offLine = (value - 360f) / 360f;
                     if (offLine > 0.5f) {
-                        textAlpha = (int) (255 * ((offLine - 0.5f) / 0.5f));
+                        textAlpha =  (255 * ((offLine - 0.5f) / 0.5f));
+                        if(textAlpha==1){
+                            Log.d("startAnim", "onAnimationUpdate: ");
+                        }
                     } else {
                         textAlpha = 0;
                     }
@@ -141,6 +145,8 @@ public class PieChartView extends View {
         });
         animator.start();
     }
+
+
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -158,6 +164,7 @@ public class PieChartView extends View {
             mCanvas = canvas;
             drawPie();
             if (offRadius == 360f) {
+                mCanvas = canvas;
                 drawTitle();
             }
         } catch (Exception e) {
@@ -201,7 +208,7 @@ public class PieChartView extends View {
                 mPaint.setTextSize(itemTextSize);
                 mPaint.setStyle(Paint.Style.FILL);
                 mPaint.setTextAlign(Paint.Align.CENTER);
-                mPaint.setAlpha(textAlpha);
+                mPaint.setAlpha((int)textAlpha);
                 mCanvas.drawText(itemType.type, centerPoint.x + (endPoint.x - centerPoint.x) / 2,
                         centerPoint.y - textPadding, mPaint);
                 mPaint.setTextSize(itemTextSize * 4 / 5);
@@ -245,7 +252,7 @@ public class PieChartView extends View {
                 mPaint.setTextSize(itemTextSize);
                 mPaint.setStyle(Paint.Style.FILL);
                 mPaint.setTextAlign(Paint.Align.CENTER);
-                mPaint.setAlpha(textAlpha);
+                mPaint.setAlpha((int)textAlpha);
                 mCanvas.drawText(itemType.type, centerPoint.x + (endPoint.x - centerPoint.x) / 2,
                         centerPoint.y - textPadding, mPaint);
                 mPaint.setTextSize(itemTextSize * 4 / 5);

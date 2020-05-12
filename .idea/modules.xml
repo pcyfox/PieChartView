@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidProjects-PieChartView.iml" filepath="$PROJECT_DIR$/AndroidProjects-PieChartView.iml" group="PieChartView" />
       <module fileurl="file://$PROJECT_DIR$/PieChartView.iml" filepath="$PROJECT_DIR$/PieChartView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/PieChartView-app.iml" filepath="$PROJECT_DIR$/app/PieChartView-app.iml" group="PieChartView/app" />
+      <module fileurl="file://$PROJECT_DIR$/piechartlib/PieChartView-piechartlib.iml" filepath="$PROJECT_DIR$/piechartlib/PieChartView-piechartlib.iml" group="PieChartView/piechartlib" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/piechartlib/piechartlib.iml" filepath="$PROJECT_DIR$/piechartlib/piechartlib.iml" />
     </modules>
